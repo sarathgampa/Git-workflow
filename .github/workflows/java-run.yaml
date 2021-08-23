@@ -1,14 +1,20 @@
-name: Java-run-flow
+name: java-run
 on:
   push:
     branches:
     - main
   pull_request:
     branches:
-    - main
+    - main 
 jobs:
   first-job:
     runs-on: ubuntu-latest
-  steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-java@v2
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: 11
+    - run: java --version
+    - run: javac HelloWorld.java
+    - run: java HelloWorld
